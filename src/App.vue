@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <MenuComponent :menuLinks="menuLinks"/>
+    <MainVue/>
+    <AboutMeVue/>
+    <ProjectsGridVue/>
+    <ContactMeVue/>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import MenuComponent from '@/components/MenuComponent.vue'
+import MainVue from '@/components/MainComponent.vue';
+import AboutMeVue from '@/components/AboutMe.vue';
+import ProjectsGridVue from '@/components/projects/ProjectsGrid.vue';
+import ContactMeVue from '@/components/ContactMe.vue';
+import { onMounted } from 'vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+onMounted(() => {
+  document.title = "Kauanldsb | Dev";
+});
+
+const menuLinks = [
+  {label: 'Home', id: 'main'},
+  {label: 'About me', id: 'about-me'},
+  {label: 'Projects', id: 'projects-grid'},
+  {label: 'Contact', id: 'contact-me'},
+]
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.full-height {
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 </style>
